@@ -15,3 +15,7 @@ https://www.youtube.com/watch?v=_TLpUt039jk&list=PLR8JXremim5BaPqraGKBPS4rFhywgU
 
 ## install mongoose
 npm i mongoose
+
+## models
+Le models sert à créer des model de creation dans la db
+

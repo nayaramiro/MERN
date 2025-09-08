@@ -1,5 +1,6 @@
 import userService from "../services/user.service.js";
-// ce que j'envoie comme reponse aux routes
+import mongoose from "mongoose";
+// ma function pour créer un utilisateur
 const create = async (req, res) => {
   //condtion pour verification, afin d'eviter de gaspiller de la memoire
   //je dis que ces parametres viennent de req.body
@@ -10,7 +11,7 @@ const create = async (req, res) => {
     return;
   }
 
-  const user = await userService.create(req.body);
+  const user = await userService.createService(req.body);
   if (!user) {
     return res
       .status(400)
@@ -31,6 +32,34 @@ const create = async (req, res) => {
   });
 };
 
+//function asynchronique car je fais une requete à la base de donnée et je dois attendre la reponse pour continuer
+const findAllUsers = async (req, res) => {
+  const users = await userService.findAllService();
+  if (users.lenght === 0) {
+    return res.status(400).send({ message: "il n'y a pas d'utilisateur" });
+  }
+
+  res.send(users);
+};
+
+//fonction pour trouver un utilisateur par son id
+const findUserById = async (req, res) => {
+  const id = req.params.id;
+
+  //vérification que l'id est bien un id de mongoose
+  if(!mongoose.Types.ObjectId.isValid(id)){
+    return res.status(400).send({message: "id invalide"});
+  }
+
+  const user = await userService.findUserByIdService(id);
+  if (!user) {
+    return res.status(400).send({ message: "utilisateur non trouvé" });
+  }
+  res.send(user);
+};
+
 export default {
   create,
+  findAllUsers,
+  findUserById,
 };
