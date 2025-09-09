@@ -1,5 +1,5 @@
 import userService from "../services/user.service.js";
-import mongoose from "mongoose";
+//import mongoose from "mongoose";
 
 // ma function pour créer un utilisateur
 const create = async (req, res) => {
@@ -45,17 +45,19 @@ const findAllUsers = async (req, res) => {
 
 //fonction pour trouver un utilisateur par son id
 const findUserById = async (req, res) => {
-  const id = req.params.id;
-
   //vérification que l'id est bien un id de mongoose
+
+  /* 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({ message: "id invalide" });
-  }
+  } */
 
-  const user = await userService.findUserByIdService(id);
+  const user = req.user;
+
+  /* 
   if (!user) {
     return res.status(400).send({ message: "utilisateur non trouvé" });
-  }
+  } */
   res.send(user);
 };
 
@@ -67,9 +69,11 @@ const update = async (req, res) => {
     res.status(400).send({ message: "Au moins un champs doit être rempli" });
   }
 
-  const id = req.params.id;
+  const { id, user } = req;
 
   //vérification que l'id est bien un id de mongoose
+
+  /* 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({ message: "id invalide" });
   }
@@ -79,7 +83,7 @@ const update = async (req, res) => {
 
   if (!user) {
     return res.status(400).send({ message: "utilisateur non trouvé" });
-  }
+  } */
 
   await userService.updateService(
     id,
