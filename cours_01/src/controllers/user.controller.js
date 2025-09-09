@@ -5,75 +5,94 @@ import userService from "../services/user.service.js";
 const create = async (req, res) => {
   //condtion pour verification, afin d'eviter de gaspiller de la memoire
   //je dis que ces parametres viennent de req.body
-  const { name, username, email, password, avatar, background } = req.body;
+  try {
+    const { name, username, email, password, avatar, background } = req.body;
 
-  if (!name || !username || !email || !password || !avatar || !background) {
-    res.status(400).send({ message: "tous les champs sont obligatoires" });
-    return;
+    if (!name || !username || !email || !password || !avatar || !background) {
+      res.status(400).send({ message: "tous les champs sont obligatoires" });
+      return;
+    }
+
+    const user = await userService.createService(req.body);
+    if (!user) {
+      return res
+        .status(400)
+        .send({ message: "erreur lors de la création de l'utilisateur" });
+    }
+
+    //si tout est ok, je cree l'utilisateur
+    res.status(201).send({
+      message: "utilisateur créé",
+      user: {
+        id: user._id,
+        name,
+        username,
+        email,
+        avatar,
+        background,
+      },
+    });
+  } catch (err) {
+    res.status(500).send({
+      message: err.message,
+    });
   }
-
-  const user = await userService.createService(req.body);
-  if (!user) {
-    return res
-      .status(400)
-      .send({ message: "erreur lors de la création de l'utilisateur" });
-  }
-
-  //si tout est ok, je cree l'utilisateur
-  res.status(201).send({
-    message: "utilisateur créé",
-    user: {
-      id: user._id,
-      name,
-      username,
-      email,
-      avatar,
-      background,
-    },
-  });
 };
 
 //function asynchronique car je fais une requete à la base de donnée et je dois attendre la reponse pour continuer
 const findAllUsers = async (req, res) => {
-  const users = await userService.findAllService();
-  if (users.lenght === 0) {
-    return res.status(400).send({ message: "il n'y a pas d'utilisateur" });
-  }
+  try {
+    const users = await userService.findAllService();
+    if (users.lenght === 0) {
+      return res.status(400).send({ message: "il n'y a pas d'utilisateur" });
+    }
 
-  res.send(users);
+    res.send(users);
+  } catch (err) {
+    res.status(500).send({
+      message: err.message,
+    });
+  }
 };
 
 //fonction pour trouver un utilisateur par son id
 const findUserById = async (req, res) => {
-  //vérification que l'id est bien un id de mongoose
+  try {
+    //vérification que l'id est bien un id de mongoose
 
-  /* 
-  if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(400).send({ message: "id invalide" });
-  } */
+    /* 
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).send({ message: "id invalide" });
+    } */
 
-  const user = req.user;
+    const user = req.user;
 
-  /* 
-  if (!user) {
-    return res.status(400).send({ message: "utilisateur non trouvé" });
-  } */
-  res.send(user);
+    /* 
+    if (!user) {
+      return res.status(400).send({ message: "utilisateur non trouvé" });
+    } */
+    res.send(user);
+  } catch (err) {
+    res.status(500).send({
+      message: err.message,
+    });
+  }
 };
 
 const update = async (req, res) => {
-  const { name, username, email, password, avatar, background } = req.body;
+  try {
+    const { name, username, email, password, avatar, background } = req.body;
 
-  //condition pour vérifier si au moins un champs est rempli
-  if (!name && !username && !email && !password && !avatar && !background) {
-    res.status(400).send({ message: "Au moins un champs doit être rempli" });
-  }
+    //condition pour vérifier si au moins un champs est rempli
+    if (!name && !username && !email && !password && !avatar && !background) {
+      res.status(400).send({ message: "Au moins un champs doit être rempli" });
+    }
 
-  const { id, user } = req;
+    const { id, user } = req;
 
-  //vérification que l'id est bien un id de mongoose
+    //vérification que l'id est bien un id de mongoose
 
-  /* 
+    /* 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({ message: "id invalide" });
   }
@@ -85,17 +104,22 @@ const update = async (req, res) => {
     return res.status(400).send({ message: "utilisateur non trouvé" });
   } */
 
-  await userService.updateService(
-    id,
-    name,
-    username,
-    email,
-    password,
-    avatar,
-    background
-  );
+    await userService.updateService(
+      id,
+      name,
+      username,
+      email,
+      password,
+      avatar,
+      background
+    );
 
-  res.send({ message: "utilisateur mis à jour" });
+    res.send({ message: "utilisateur mis à jour" });
+  } catch (err) {
+    res.status(500).send({
+      message: err.message,
+    });
+  }
 };
 
 export default {
