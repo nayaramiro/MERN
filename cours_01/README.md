@@ -16,6 +16,19 @@ https://www.youtube.com/watch?v=_TLpUt039jk&list=PLR8JXremim5BaPqraGKBPS4rFhywgU
 ## install mongoose
 npm i mongoose
 
+
+## middlwares
+les middlewares prennent les params du URLS et font une vérification pour les autres fichiers et reenvois les données
+
+# controllers
+exécute nos function create comme createUser, findById etc qui prends les infos de middle
+
+## services
+fais la liaisons entre notre db et la function des controllers
+
+## routes
+contient nos routes
+
 ## models
-Le models sert à créer des model de creation dans la db
+créé un système de schema User par exemple dans notre db avec nos champs sp&ciphique come string, boolean, require etc
 

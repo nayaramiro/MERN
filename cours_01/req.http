@@ -24,3 +24,12 @@ Content-Type: application/json
   "name": "Jane Doe",
   "background": "vert"
 }
+
+### requete POST login
+POST http://localhost:3000/auth
+Content-Type: application/json
+
+{
+  "email": "marc@example.com",
+  "password": "0123456"
+}

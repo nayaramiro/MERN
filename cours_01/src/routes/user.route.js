@@ -8,7 +8,8 @@ const route = Router();
 
 route.post("/", userController.create);
 route.get("/", userController.findAllUsers);
-route.get("/:id",validId, validUser, userController.findUserById);
-route.patch("/:id",validId, validUser, userController.update)
+route.get("/:id", validId, validUser, userController.findUserById);
+route.patch("/:id", validId, validUser, userController.update);
+
 
 export default route;
