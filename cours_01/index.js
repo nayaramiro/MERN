@@ -4,6 +4,7 @@ import express from "express";
 //importation de la route user (GET, POST, PUT, DELETE)
 import userRoute from "./src/routes/user.route.js";
 import authRoute from "./src/routes/auth.route.js";
+import newsRoute from "./src/routes/news.route.js";
 import connectDB from "./src/db/db.js";
 
 const app = express();
@@ -12,6 +13,7 @@ connectDB();
 app.use(express.json());
 app.use("/users", userRoute);
 app.use("/auth", authRoute);
+app.use("/news", newsRoute);
 
 // Routes
 app.listen(port, () => console.log(`server started on port ${port}`));

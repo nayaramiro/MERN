@@ -32,3 +32,11 @@ contient nos routes
 ## models
 créé un système de schema User par exemple dans notre db avec nos champs sp&ciphique come string, boolean, require etc
 
+
+
+
+01. Toujours commencer par le models
+02. Créer notre nouvelle route
+03. Créer les function qui sont dans route dans controllers
+04. Créer le Service, car controllers envoit au service ( cela reçoit les données et envoit au mongoose)
+

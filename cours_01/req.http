@@ -33,3 +33,16 @@ Content-Type: application/json
   "email": "marc@example.com",
   "password": "0123456"
 }
+
+### requete Get news
+GET http://localhost:3000/news
+
+### requete POST news
+POST http://localhost:3000/news
+Content-Type: application/json
+
+{
+  "title": "Test",
+  "text": "Ceci est mon text pour test",
+  "banner": "imageTest.jpg"
+}
