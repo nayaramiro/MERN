@@ -40,9 +40,10 @@ GET http://localhost:3000/news
 ### requete POST news
 POST http://localhost:3000/news
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDE3ODkzMSwiZXhwIjoxNzYwMjY1MzMxfQ.8CSh_icLOWFRJCoA25Kwa-0ZzjAKkGNdmcVb8wZH04Q
 
 {
-  "title": "Test",
+  "title": "Test TOKEN espace",
   "text": "Ceci est mon text pour test",
   "banner": "imageTest.jpg"
 }

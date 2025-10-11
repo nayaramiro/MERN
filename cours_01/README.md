@@ -39,4 +39,6 @@ créé un système de schema User par exemple dans notre db avec nos champs sp&c
 02. Créer notre nouvelle route
 03. Créer les function qui sont dans route dans controllers
 04. Créer le Service, car controllers envoit au service ( cela reçoit les données et envoit au mongoose)
+05. Nous avons créer une authotifications dans le headers
+06. Création d'un midlleware pour pouvoir faire nos vérifications et pouvoir laisser l'utilisateur créer quelque chose, ce middleware sera disponible pour les autres routes, c'est pourquoi il est dans le middleware
 

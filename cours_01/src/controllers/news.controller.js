@@ -14,9 +14,11 @@ const create = async (req, res) => {
       title,
       text,
       banner,
-      user: { _id: "68c86adeca01773ac218440b" },
+      user: req.userID,
     });
-    res.send(201);
+    res.status(201).send({
+      message: "Created new news",
+    });
   } catch (err) {
     res.status(500).send({ message: err.message });
   }
