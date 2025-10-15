@@ -19,26 +19,24 @@ export const authMiddleware = (req, res, next) => {
     if (schema !== "Bearer") {
       return res.send(401);
     }
+
     jwt.verify(token, process.env.SECRET_JWT, async (error, decoded) => {
       if (error) {
         return res.status(401).send({
           message: "Token unvalid",
         });
       }
-      console.log(decoded);
 
       // check si token existe mais que l'utilisateur n'existe plus
       const user = await userService.findUserByIdService(decoded.id);
-      console.log(user);
 
       if (!user || !user.id) {
         return res.status(401).send({ message: "Inavlid token!" });
       }
       // j'envoie à mon req le id de mon DB findeByID depuis mon id depuis mon token
       req.userID = user.id;
+      next();
     });
-
-    next();
   } catch (err) {
     res.status(500).send(err.message);
   }
