@@ -6,17 +6,12 @@ import {
   findByIdService,
   findByTitleService,
   findByUserService,
+  updateService,
 } from "../services/news.service.js";
 
 const create = async (req, res) => {
   try {
-    const { title, text, banner } = req.body;
-
-    if (!title || !text || !banner) {
-      res.status(400).send({
-        message: "Submit all fields for registration",
-      });
-    }
+    const { title, text, banner } = req.newParams;
 
     console.log("req.userID avant createService:", req.userID);
 
@@ -178,7 +173,7 @@ export const findByUser = async (req, res) => {
   try {
     // cela vient du middleware
     const id = req.userID;
-    console.log(id)
+    console.log(id);
     const news = await findByUserService(id);
 
     res.send({
@@ -198,6 +193,25 @@ export const findByUser = async (req, res) => {
         };
       }),
     });
+  } catch (err) {
+    return res.status(400).send({ message: err.message });
+  }
+};
+
+export const update = async (req, res) => {
+  try {
+    const { title, text, banner } = req.newParams;
+    const { id } = req.params;
+    const news = await findByIdService(id);
+    console.log(news.user._id);
+    console.log(req.user);
+
+    if (String(news.user._id) !== req.userID) {
+      return res.status(401).send({ message: "You can not update this news" });
+    }
+
+    await updateService(id, title, text, banner);
+    return res.send({ message: "Post updated successfully !" });
   } catch (err) {
     return res.status(400).send({ message: err.message });
   }
