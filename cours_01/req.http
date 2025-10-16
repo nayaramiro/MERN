@@ -40,6 +40,9 @@ GET http://localhost:3000/news
 ### requete Get news TOP
 GET http://localhost:3000/news/top
 
+### requete Get news By Id
+GET http://localhost:3000/news/68efe0b3f678dea0c7a2c07d
+
 
 ### requete Get news variables
 GET http://localhost:3000/news?limit=5&offset=35
