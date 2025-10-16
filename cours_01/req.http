@@ -37,13 +37,17 @@ Content-Type: application/json
 ### requete Get news
 GET http://localhost:3000/news
 
+### requete Get news TOP
+GET http://localhost:3000/news/top
+
+
 ### requete Get news variables
 GET http://localhost:3000/news?limit=5&offset=35
 
 ### requete POST news
 POST http://localhost:3000/news
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDU0Nzk1MiwiZXhwIjoxNzYwNjM0MzUyfQ.Np2ZmsLFRfVUQuDQ0jhiPo99ecoV8_GE5jCd_r-tPg0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDYzMjI1NywiZXhwIjoxNzYwNzE4NjU3fQ.I9kOeOHIgxIuP4ZyVxMtbrWIMA73XG-hFaN5LvejVyQ
 
 {
   "title": "User Id",

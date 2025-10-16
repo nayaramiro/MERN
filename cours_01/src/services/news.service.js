@@ -13,4 +13,6 @@ const findAllService = (limit, offset) =>
 //compte combien de document nous avons dans cette table
 const countNews = () => News.countDocuments();
 
-export { createService, findAllService, countNews };
+const topNewsService = () => News.findOne().sort({ _id: -1 }).populate("user");
+
+export { createService, findAllService, countNews, topNewsService };
