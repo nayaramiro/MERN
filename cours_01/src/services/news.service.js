@@ -17,4 +17,16 @@ const topNewsService = () => News.findOne().sort({ _id: -1 }).populate("user");
 
 export const findByIdService = (id) => News.findById(id).populate("user");
 
+/* regex 
+$search = "ana";
+$sql = "SELECT * FROM users WHERE name LIKE :search";
+$option = ne pas faire de différences entre uppercase et lowercase
+*/
+export const findByTitleService = (title) =>
+  News.find({
+    title: { $regex: `${title || ""}`, $options: "i" },
+  })
+    .sort({ _id: -1 })
+    .populate("user");
+
 export { createService, findAllService, countNews, topNewsService };
