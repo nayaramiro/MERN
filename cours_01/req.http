@@ -46,6 +46,11 @@ GET http://localhost:3000/news/68efe0b3f678dea0c7a2c07d
 ### requete Get news By Title Query
 GET http://localhost:3000/news/search?title=search
 
+### requete Get news By User
+GET http://localhost:3000/news/byUser
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDY0MDUyNSwiZXhwIjoxNzYwNzI2OTI1fQ._W8-ufaenxGphn9ntlfL9qTYG7GTmWJYnxswqnZ6Y5g
+
 
 ### requete Get news variables
 GET http://localhost:3000/news?limit=5&offset=35
@@ -53,7 +58,7 @@ GET http://localhost:3000/news?limit=5&offset=35
 ### requete POST news
 POST http://localhost:3000/news
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDYzMjI1NywiZXhwIjoxNzYwNzE4NjU3fQ.I9kOeOHIgxIuP4ZyVxMtbrWIMA73XG-hFaN5LvejVyQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDY0MDUyNSwiZXhwIjoxNzYwNzI2OTI1fQ._W8-ufaenxGphn9ntlfL9qTYG7GTmWJYnxswqnZ6Y5g
 
 {
   "title": "Search",

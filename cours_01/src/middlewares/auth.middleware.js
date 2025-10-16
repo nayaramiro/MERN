@@ -1,43 +1,37 @@
 import jwt from "jsonwebtoken";
 import userService from "../services/user.service.js";
 
-//next pour poursuivre le code
 export const authMiddleware = (req, res, next) => {
   try {
     const { authorization } = req.headers;
     if (!authorization) {
-      return res.send(401);
+      return res.status(401).send({ message: "Token not provided" });
     }
-    // séparer une phrase depuis un espace
-    const parts = authorization.split(" ");
 
+    const parts = authorization.split(" ");
     if (parts.length !== 2) {
-      return res.send(401);
+      return res.status(401).send({ message: "Invalid token format" });
     }
-    // je décompose mon parts, le premier sera schema et le deuxième le token
+
     const [schema, token] = parts;
     if (schema !== "Bearer") {
-      return res.send(401);
+      return res.status(401).send({ message: "Invalid token type" });
     }
 
     jwt.verify(token, process.env.SECRET_JWT, async (error, decoded) => {
       if (error) {
-        return res.status(401).send({
-          message: "Token unvalid",
-        });
+        return res.status(401).send({ message: "Token invalid" });
       }
 
-      // check si token existe mais que l'utilisateur n'existe plus
       const user = await userService.findUserByIdService(decoded.id);
-
       if (!user || !user.id) {
-        return res.status(401).send({ message: "Inavlid token!" });
+        return res.status(401).send({ message: "User not found" });
       }
-      // j'envoie à mon req le id de mon DB findeByID depuis mon id depuis mon token
-      req.userID = user.id;
+
+      req.userID = user.id; // 🔹 sera disponible dans ton contrôleur
       next();
     });
   } catch (err) {
-    res.status(500).send(err.message);
+    res.status(500).send({ message: err.message });
   }
 };

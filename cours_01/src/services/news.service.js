@@ -29,4 +29,8 @@ export const findByTitleService = (title) =>
     .sort({ _id: -1 })
     .populate("user");
 
+//de base notre user dans schema équivaut au id du user
+export const findByUserService = (id) =>
+  News.find({ user: id }).sort({ _id: -1 }).populate("user");
+
 export { createService, findAllService, countNews, topNewsService };
