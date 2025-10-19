@@ -7,6 +7,7 @@ import {
   findByTitle,
   findByUser,
   update,
+  erase,
 } from "../controllers/news.controller.js";
 import { authMiddleware } from "../middlewares/auth.middleware.js";
 import { validParamsMiddleware } from "../middlewares/validParams.middleware.js";
@@ -21,5 +22,6 @@ router.get("/:id", authMiddleware, findById);
 
 // update 1 ou plusieurs data
 router.patch("/:id", authMiddleware, validParamsMiddleware, update);
+router.delete("/:id", authMiddleware, erase);
 
 export default router;

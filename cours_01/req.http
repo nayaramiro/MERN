@@ -41,7 +41,9 @@ GET http://localhost:3000/news
 GET http://localhost:3000/news/top
 
 ### requete Get news By Id
-GET http://localhost:3000/news/68efe0b3f678dea0c7a2c07d
+GET http://localhost:3000/news/68f1435c0a4d4d370566ce32
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDkwMTEzMywiZXhwIjoxNzYwOTg3NTMzfQ.akIng2J7JH7a79hnS-5HBn8q-FM9zFCD8vzCcf6S1OA
 
 ### requete Get news By Title Query
 GET http://localhost:3000/news/search?title=updated
@@ -49,7 +51,7 @@ GET http://localhost:3000/news/search?title=updated
 ### requete Get news By User
 GET http://localhost:3000/news/byUser
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDY0MjI0OSwiZXhwIjoxNzYwNzI4NjQ5fQ.4g4TXTVIWrI1CFbb2T5o-jHVLJh08KihSl34IejoI08
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDkwMTEzMywiZXhwIjoxNzYwOTg3NTMzfQ.akIng2J7JH7a79hnS-5HBn8q-FM9zFCD8vzCcf6S1OA
 
 
 ### requete Get news variables
@@ -58,7 +60,7 @@ GET http://localhost:3000/news?limit=5&offset=35
 ### requete POST news
 POST http://localhost:3000/news
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDY0MjI0OSwiZXhwIjoxNzYwNzI4NjQ5fQ.4g4TXTVIWrI1CFbb2T5o-jHVLJh08KihSl34IejoI08
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDkwMTEzMywiZXhwIjoxNzYwOTg3NTMzfQ.akIng2J7JH7a79hnS-5HBn8q-FM9zFCD8vzCcf6S1OA
 
 {
   "title": "Search",
@@ -70,12 +72,18 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2M
 ### requete POST news
 PATCH http://localhost:3000/news/68f1435c0a4d4d370566ce32
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDY0MjI0OSwiZXhwIjoxNzYwNzI4NjQ5fQ.4g4TXTVIWrI1CFbb2T5o-jHVLJh08KihSl34IejoI08
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDkwMTEzMywiZXhwIjoxNzYwOTg3NTMzfQ.akIng2J7JH7a79hnS-5HBn8q-FM9zFCD8vzCcf6S1OA
 
 {
   "title": "Updated 3",
   "text": "Ceci est mon text pour test",
   "banner": "imageTest.jpg"
 }
+
+### requete Get news By Id
+DELETE http://localhost:3000/news/68f1435c0a4d4d370566ce32
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4Yzg2ZjM2MzU1NTU1YmI1OWEwN2M4NyIsImlhdCI6MTc2MDkwMTEzMywiZXhwIjoxNzYwOTg3NTMzfQ.akIng2J7JH7a79hnS-5HBn8q-FM9zFCD8vzCcf6S1OA
+
 
 
